@@ -19,11 +19,10 @@
 class HumanB {
     
     public:
-        HumanB();
         HumanB(std::string name);
         ~HumanB();
-        void attack();
-        void setWeapon(const Weapon &weapon);
+        void attack() const;
+        void setWeapon(Weapon &weapon);
     
     private:
         std::string nameB;

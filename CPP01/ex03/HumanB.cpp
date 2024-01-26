@@ -12,21 +12,13 @@
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(){
-    
-}
-
-HumanB::HumanB(std::string name)
-{
-    nameB = name;
-    WeaponB = NULL;
+HumanB::HumanB(std::string name) : nameB(name), WeaponB(NULL) {  
 }
 
 HumanB::~HumanB() {
-    delete(WeaponB);
 }
 
-void HumanB::attack()
+void HumanB::attack() const
 {
     std::cout << this->nameB << " attacks with ";
     if (WeaponB != NULL)
@@ -35,8 +27,7 @@ void HumanB::attack()
         std::cout << "no weapon" << std::endl;
 }
 
-void HumanB::setWeapon(const Weapon& weapon)
+void HumanB::setWeapon(Weapon &weapon)
 {
-    delete (WeaponB);
-    WeaponB = new Weapon(weapon.getType());
+    WeaponB = &weapon;
 }
