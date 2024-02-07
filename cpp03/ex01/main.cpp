@@ -6,29 +6,20 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:58:50 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/02/06 13:37:46 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/02/07 10:41:08 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
-int main( void ) 
+int main( void )
 {
-    Fixed a;
-    Fixed const b( 10 );
-    Fixed const c( 42.42f );
-    Fixed const d( b );
-            
-    a = Fixed( 1234.4321f );
+    ClapTrap claptrap("Joe");
+    ClapTrap claptrap2(claptrap);
     
-    std::cout << "a is " << a << std::endl;
-    std::cout << "b is " << b << std::endl;
-    std::cout << "c is " << c << std::endl;
-    std::cout << "d is " << d << std::endl;
-    std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-    std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-    std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-    std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+    claptrap.attack("target");
+    claptrap.takeDamage(5);
+    claptrap.beRepaired(5);
     
-    return 0;
+    return 0; 
 }

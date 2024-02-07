@@ -6,7 +6,7 @@
 #    By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 16:38:59 by jmarinho          #+#    #+#              #
-#    Updated: 2024/02/06 12:09:40 by jmarinho         ###   ########.fr        #
+#    Updated: 2024/02/05 11:58:43 by jmarinho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ GREEN := \033[0;32m
 YELLOW := \033[0;33m
 RESET := \033[0m
 
-NAME = a.out
+NAME = MyFirstClassInOrthodoxCanonicalForm
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 OBJS = $(SRC:.cpp=.o)

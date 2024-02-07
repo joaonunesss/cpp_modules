@@ -6,7 +6,7 @@
 #    By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 16:38:59 by jmarinho          #+#    #+#              #
-#    Updated: 2024/02/06 12:09:40 by jmarinho         ###   ########.fr        #
+#    Updated: 2024/02/07 10:24:26 by jmarinho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME = a.out
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 OBJS = $(SRC:.cpp=.o)
-SRC = main.cpp Fixed.cpp
+SRC = main.cpp ClapTrap.cpp
 
 all: $(NAME)
 

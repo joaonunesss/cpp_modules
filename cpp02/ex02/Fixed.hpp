@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:58:46 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/02/06 14:10:05 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:07:16 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,28 @@ class Fixed {
 
         friend std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
     
+        bool operator>(const Fixed &other) const;
+        bool operator<(const Fixed &other) const;
+        bool operator>=(const Fixed &other) const;
+        bool operator<=(const Fixed &other) const;
+        bool operator==(const Fixed &other) const;
+        bool operator!=(const Fixed &other) const;
+
+        Fixed operator+(const Fixed &other) const;
+        Fixed operator-(const Fixed &other) const;
+        Fixed operator*(const Fixed &other) const;
+        Fixed operator/(const Fixed &other) const;
+    
+        Fixed &operator++();    // pre-increment
+        Fixed operator++(int);  // post-increment
+        Fixed &operator--();    // pre-decrement
+        Fixed operator--(int);  // post-decrement
+
+        static Fixed &min(Fixed &a, Fixed &b);
+        static const Fixed &min(const Fixed &a, const Fixed &b);
+        static Fixed &max(Fixed &a, Fixed &b);
+        static const Fixed &max(const Fixed &a, const Fixed &b);
+        
     private:
 
         int value;
