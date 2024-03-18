@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 10:24:21 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/18 14:38:22 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/03/18 15:12:05 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/03/18 16:28:19 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ClapTrap_HPP
-#define ClapTrap_HPP
+#ifndef DiamondTrap_HPP
+#define DiamondTrap_HPP
 
 #include <iostream>
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class ClapTrap{
+class DiamondTrap : public ScavTrap, public FragTrap {
 
     public:
-        ClapTrap(std::string set_name);
-        ~ClapTrap();
-        ClapTrap( ClapTrap const &other);
+        DiamondTrap(std::string set_name);
+        ~DiamondTrap();
+        DiamondTrap( DiamondTrap const &other);
 
-        void attack(const std::string& target);
-        void takeDamage(unsigned int amount);
-        void beRepaired(unsigned int amount);
-
+        /*void attack(const std::string& target);*/
+        void printpoints();
+        using ScavTrap::attack;
+        void whoAmI();
+    
     protected:
         std::string new_name;
-        int hitpoints = 100;
-        int energyPoints = 50;
-        int attackDamage = 20;
+        void set_attackfunction();
     
 };
 

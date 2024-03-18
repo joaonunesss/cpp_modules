@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 10:24:21 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/18 14:38:22 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/03/18 15:03:28 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/03/18 15:06:17 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ClapTrap_HPP
-#define ClapTrap_HPP
+#ifndef FragTrap_HPP
+#define FragTrap_HPP
 
 #include <iostream>
+#include "ClapTrap.hpp"
 
-class ClapTrap{
+class FragTrap : public ClapTrap {
 
     public:
-        ClapTrap(std::string set_name);
-        ~ClapTrap();
-        ClapTrap( ClapTrap const &other);
+        FragTrap(std::string set_name);
+        ~FragTrap();
+        FragTrap( FragTrap const &other);
+
 
         void attack(const std::string& target);
-        void takeDamage(unsigned int amount);
-        void beRepaired(unsigned int amount);
-
+        void highFivesGuys(void);
+    
     protected:
-        std::string new_name;
-        int hitpoints = 100;
-        int energyPoints = 50;
-        int attackDamage = 20;
     
 };
 

@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:24:21 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/18 14:38:22 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:05:53 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ class ClapTrap{
     protected:
         std::string new_name;
         int hitpoints = 100;
-        int energyPoints = 50;
-        int attackDamage = 20;
+        int energyPoints = 100;
+        int attackDamage = 30;
     
 };
 

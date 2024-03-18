@@ -6,19 +6,20 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:58:50 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/18 15:08:38 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:28:34 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main( void )
 {
-    ScavTrap scavtrap("Bill");
-    ScavTrap scavtrap2(scavtrap);
+    DiamondTrap diamondtrap("Joel");
+    DiamondTrap diamondtrap2(diamondtrap);
 
-    scavtrap.attack("target");
-    scavtrap.guardGate();
+    diamondtrap.printpoints();
+    diamondtrap.attack("target");
+    diamondtrap.whoAmI();
     
     return 0; 
 }
