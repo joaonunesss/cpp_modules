@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:20:03 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/01/23 16:17:16 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:39:12 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@
 class PhoneBook {
     
     public:
-    
-    Contact contacts[8];
-    int id;
-    void add (void);
-    void search (void);
-    void exit (void);
-    PhoneBook();
+        PhoneBook();
+        Contact contacts[8];
+        void add (void);
+        void search (void);
+        void exit (void);
+        void errormsg();
+        
+        int id = 0;
 
-    std::string checklength(std::string str);
+        std::string checklength(std::string str);
 };
 
 #endif

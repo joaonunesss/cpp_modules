@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:05:49 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/01/23 16:51:48 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:37:05 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 #include <iomanip>
 #include <unistd.h>
 
-PhoneBook::PhoneBook()
-{
-    id = 0;
+PhoneBook::PhoneBook(){
+
 }
 
 void PhoneBook::add()
@@ -31,24 +30,47 @@ void PhoneBook::add()
     std::cout << "\033c";
     std::cout << "First Name: " << std::endl;
     getline(std::cin, fname);
+    if(fname.empty())
+    {
+        errormsg();
+        return ;
+    }
     std::cout << "Last Name: " << std::endl; 
     getline(std::cin, lname);
+    if(lname.empty())
+    {
+        errormsg();
+        return ;
+    }
     std::cout << "Nickname: " << std::endl;
     getline(std::cin, nick);
+    if(nick.empty())
+    {
+        errormsg();
+        return ;
+    }
     std::cout << "Phone number: " << std::endl;
     getline(std::cin, phonenbr);
+    if(phonenbr.empty())
+    {
+        errormsg();
+        return ;
+    }
     std::cout << "Darkest Secret: " << std::endl;
     getline(std::cin, secret);
-
-    if(fname.empty() || lname.empty() || nick.empty() || phonenbr.empty() || secret.empty())
+    if(secret.empty())
     {
-        std::cout << "\033[1;31m" << "ERROR, no empty fields allowed" << "\033[0m" << std::endl 
-            << "\033[1;33m" << "Press Enter to continue..." << "\033[0m" << std::endl;
-        std::cin.ignore();
-        add();
+        errormsg();
+        return ;
     }
-    else
-        contacts[id++ % 8] = Contact(fname, lname, nick, phonenbr, secret);
+    contacts[id++ % 8] = Contact(fname, lname, nick, phonenbr, secret);
+}
+
+void PhoneBook::errormsg(){
+    
+    std::cout << "\033[1;31m" << "ERROR, no empty fields allowed" << "\033[0m" << std::endl 
+            << "\033[1;33m" << "Press Enter to continue..." << "\033[0m" << std::endl;
+    std::cin.get();
 }
 
 std::string PhoneBook::checklength(std::string str)
@@ -64,7 +86,7 @@ void PhoneBook::search()
     std::string index;
     int nbr;
     
-    std::cout << "\033c";
+    std::cout << "\033c"; //clear the terminal
     std::cout << "|  Index   |First Name| Last Name| Nickname |" << std::endl;
     std::cout << "|----------|----------|----------|----------|" << std::endl;
 
@@ -72,13 +94,13 @@ void PhoneBook::search()
     {
         std::cout << "|";
         std::cout << std::setw(10) << i + 1 << "|";
-        std::cout << std::setw(10) << checklength(contacts[i].firstname) << "|";
-        std::cout << std::setw(10) << checklength(contacts[i].lastname) << "|";
-        std::cout << std::setw(10) << checklength(contacts[i].nickname) << "|";
+        std::cout << std::setw(10) << checklength(contacts[i].get_firstname()) << "|";
+        std::cout << std::setw(10) << checklength(contacts[i].get_lastname()) << "|";
+        std::cout << std::setw(10) << checklength(contacts[i].get_nickname()) << "|";
         std::cout << std::endl;
     }
-        std::cout << "Choose an index to display" << std::endl;
-        std::cout << "Press BACK to return" << std::endl;
+    std::cout << "Choose an index to display" << std::endl;
+    std::cout << "Comand BACK to return" << std::endl;
     while(1)  
     {
         getline(std::cin, index);
@@ -86,18 +108,18 @@ void PhoneBook::search()
         nbr = atoi(index.c_str());
         if(index == "BACK")
             break;
-        else if (nbr > 7 || nbr < 1)
+        else if (nbr > 8 || nbr < 1)
             std::cout << "\033[1;33m" << "Index out of range. Try again" << "\033[0m" << std::endl;
         else if (nbr > id)
             std::cout  << "\033[1;33m" << "Nothing to display for this index" << "\033[0m" << std::endl; 
         else if (nbr <= id)
         { 
-            std::cout << "\033c";
-            std::cout  << "First Name: " << contacts[nbr - 1].firstname << std::endl;
-            std::cout  << "Last Name: " << contacts[nbr - 1].lastname << std::endl;
-            std::cout  << "Nickname: " << contacts[nbr -1].nickname << std::endl;
-            std::cout  << "Phonenumber: " << contacts[nbr-1].phonenumber << std::endl;
-            std::cout  << "Darkest Secret: " << contacts[nbr-1].darkestsecret << std::endl;
+            std::cout << "\033c"; //clear the terminal
+            std::cout  << "First Name: " << contacts[nbr - 1].get_firstname() << std::endl;
+            std::cout  << "Last Name: " << contacts[nbr - 1].get_lastname() << std::endl;
+            std::cout  << "Nickname: " << contacts[nbr -1].get_nickname() << std::endl;
+            std::cout  << "Phonenumber: " << contacts[nbr-1].get_phonenumber() << std::endl;
+            std::cout  << "Darkest Secret: " << contacts[nbr-1].get_darkestsecret() << std::endl;
 
             std::cout << "Press enter to continue..." << std::endl;
             getline(std::cin, index);

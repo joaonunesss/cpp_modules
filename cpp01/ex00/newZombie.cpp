@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:46:23 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/01/25 11:59:56 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:18:59 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 Zombie *newZombie(std::string name)
 {
-    Zombie *newz;
+    Zombie *zombie;
 
-    newz = new Zombie(name);
+    zombie = new Zombie(name);
         
-    return (newz);
+    return (zombie);
 }

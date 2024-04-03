@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:34:45 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/01/23 16:51:06 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:19:57 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int ac, char **av)
     while(1)
     {
         
-        std::cout << "\033c";    
+        std::cout << "\033c"; //clear the terminal 
         std::cout<< "Please insert a command" << std::endl;
         std::cout<< "ADD    " << std::endl;
         std::cout<< "SEARCH     " << std::endl;

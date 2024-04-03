@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:54:13 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/01/25 13:44:33 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:23:34 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int main()
 {
-    Zombie *myZ;
+    Zombie *myZ; //deep copy
     
     myZ = newZombie("Manel");
     myZ->announce();
     delete(myZ);
     
-    randomChump("Zeca");
+    randomChump("Zeca"); //shallow copy
 }
