@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/23 16:38:59 by jmarinho          #+#    #+#              #
-#    Updated: 2024/02/07 10:26:45 by jmarinho         ###   ########.fr        #
+#    Created: 2024/04/08 14:10:47 by jmarinho          #+#    #+#              #
+#    Updated: 2024/04/08 16:13:06 by jmarinho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,23 +16,23 @@ YELLOW := \033[0;33m
 RESET := \033[0m
 
 NAME = a.out
-FLAGS = -Wall -Wextra -Werror -std=c++98
-RM = rm -f
 OBJS = $(SRC:.cpp=.o)
+FLAGS = -Wextra -Wall -Werror -std=c++98
+
 SRC = main.cpp ClapTrap.cpp
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@c++ $(FLAGS) $(OBJS) -o $(NAME)
+	c++ $(FLAGS) $(OBJS) -o $(NAME)
 	printf "$(GREEN)Executable ./$(NAME) was created.\n$(RESET)"
 
 clean:
-	@$(RM) $(OBJS)
+	rm -f *.o
 	printf "$(YELLOW)Object files were removed.\n$(RESET)"
 
 fclean: clean
-	@$(RM) $(NAME)
+	rm -f $(NAME)
 	printf "$(RED)Executable ./$(NAME) was removed.\n$(RESET)"
 
 re: fclean all

@@ -15,7 +15,7 @@ GREEN := \033[0;32m
 YELLOW := \033[0;33m
 RESET := \033[0m
 
-NAME = MyFirstClassInOrthodoxCanonicalForm
+NAME = a.out
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 OBJS = $(SRC:.cpp=.o)

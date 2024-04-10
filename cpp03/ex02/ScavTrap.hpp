@@ -5,30 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 14:22:05 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/18 14:48:17 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/08 16:15:45 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/08 16:48:39 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ScavTrap_HPP
-#define ScavTrap_HPP
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-#include <iostream>
 #include "ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap {
 
-    public:
-        ScavTrap(std::string set_name);
-        ~ScavTrap();
-        ScavTrap( ScavTrap const &other);
+public:
+    ScavTrap();                      
+    ~ScavTrap();                     
+    ScavTrap(std::string other_name); 
+    ScavTrap(const ScavTrap& other);
+    ScavTrap&operator=(const ScavTrap& other);
 
-
-        void attack(const std::string& target);
-        void guardGate();
+    void attack(const std::string& target);
     
-    protected:
-    
+    void guardGate();
 };
 
 #endif

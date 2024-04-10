@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:58:50 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/18 16:28:34 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/08 16:15:45 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/09 12:32:04 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-int main( void )
-{
-    DiamondTrap diamondtrap("Joel");
-    DiamondTrap diamondtrap2(diamondtrap);
+#include "ClapTrap.hpp"
 
-    diamondtrap.printpoints();
-    diamondtrap.attack("target");
-    diamondtrap.whoAmI();
+class ScavTrap : virtual public ClapTrap {
+
+public:
+    ScavTrap();                      
+    ~ScavTrap();                     
+    ScavTrap(std::string other_name); 
+    ScavTrap(const ScavTrap& other);
+    ScavTrap&operator=(const ScavTrap& other);
+
+    void attack(const std::string& target);
     
-    return 0; 
-}
+    void guardGate();
+};
+
+#endif

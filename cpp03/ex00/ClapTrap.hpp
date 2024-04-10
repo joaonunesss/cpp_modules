@@ -5,32 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 10:24:21 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/02/07 10:42:04 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/08 14:14:44 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/08 16:44:35 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ClapTrap_HPP
-#define ClapTrap_HPP
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
 
 #include <iostream>
 
-class ClapTrap{
+class ClapTrap {
 
-    public:
-        ClapTrap(std::string set_name);
-        ~ClapTrap();
-        ClapTrap( ClapTrap const &other);
+  public:
+    ClapTrap();
+    ~ClapTrap();
+    ClapTrap(std::string other_name);
+    ClapTrap(const ClapTrap &other);
+    ClapTrap&operator=(const ClapTrap &other);
 
-        void attack(const std::string& target);
-        void takeDamage(unsigned int amount);
-        void beRepaired(unsigned int amount);
+    void attack(const std::string& target);
+    void takeDamage(unsigned int amount);
+    void beRepaired(unsigned int amount);
 
-    private:
-        std::string new_name;
-        int hitpoints = 10;
-        int energyPoints = 10;
-        int attackDamage = 0;
+  private:
+    std::string name;
+    int hit_points = 10;
+    int energy_points = 10;
+    int attack_damage = 0;
     
 };
 

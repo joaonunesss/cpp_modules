@@ -6,28 +6,30 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:03:28 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/18 16:26:28 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/04/09 12:32:11 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FragTrap_HPP
-#define FragTrap_HPP
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
-#include <iostream>
 #include "ClapTrap.hpp"
 
 class FragTrap : virtual public ClapTrap {
 
     public:
-        FragTrap(std::string set_name);
+        FragTrap();
         ~FragTrap();
-        FragTrap( FragTrap const &other);
+        FragTrap(std::string other_name); 
+        FragTrap(FragTrap const &other);
+        FragTrap&operator=(const FragTrap& other);
 
         void attack(const std::string& target);
+        
         void highFivesGuys(void);
     
     protected:
-
+    
 };
 
 #endif

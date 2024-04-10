@@ -5,21 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:58:50 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/02/07 10:41:08 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/08 14:14:42 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/08 14:56:54 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-int main( void )
-{
-    ClapTrap claptrap("Joe");
-    ClapTrap claptrap2(claptrap);
+int main(){
+
+    ClapTrap Trap0;
+    ClapTrap Trap1("Bob");    
+    ClapTrap Trap2(Trap1);
+
+    std::cout << std::endl;
+
+    Trap0.attack("Manel");
+    Trap0.takeDamage(15);
+    Trap0.beRepaired(1);
+
+    Trap0.attack("Manel");
+
+    std::cout << std::endl;
     
-    claptrap.attack("target");
-    claptrap.takeDamage(5);
-    claptrap.beRepaired(5);
-    
-    return 0; 
+    Trap2.attack("Quim");
+    Trap2.takeDamage(5);
+    Trap2.beRepaired(5);
+
+    Trap2.attack("Quim");
+
+    std::cout << std::endl;
+
 }

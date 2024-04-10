@@ -6,30 +6,51 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:03:31 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/18 15:10:10 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/04/09 12:50:11 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string set_name):ClapTrap(set_name){
-    std::cout << "FragTrap Default constructor called" << std::endl;
-    new_name = set_name;
+FragTrap::FragTrap() : ClapTrap(){
+    std::cout << "FragTrap default constructor called" << std::endl;
+    name = "Default_Frag";
 }
 
 FragTrap::~FragTrap(){
-    std::cout << "FragTrap Destructor called" << std::endl;
+    std::cout << "FragTrap destructor called" << std::endl;
 }
 
-FragTrap::FragTrap(FragTrap const &other):ClapTrap(other){
+FragTrap::FragTrap(std::string other_name) : ClapTrap(other_name){
+    std::cout << "FragTrap default constructor called" << std::endl;
+    name = other_name;
+}
+
+FragTrap::FragTrap(FragTrap const &other) : ClapTrap(other){
     std::cout << "FragTrap Copy constructor called" << std::endl;
     *this = other;
 }
 
-void FragTrap::attack(const std::string& target){
-    std::cout << "FragTrap " << new_name << " attack " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
+FragTrap& FragTrap::operator=(const FragTrap& other) {
+    std::cout << "FragTrap copy assignment operator called!" << std::endl;
+    if (this != &other) {
+        name = other.name;
+    }
+    return *this;
 }
 
-void FragTrap::highFivesGuys(void){
-    std::cout << "FragTrap wants to high five you!" << std::endl;
+void FragTrap::attack(const std::string& target) {
+    if (energy_points-- > 0 && hit_points > 0)
+    {
+        std::cout << name << " attacks ";
+        std::cout << target << " causing " << attack_damage << " points of damage!" << std::endl;
+    }
+    else if (energy_points <= 0)
+        std::cout << "No energy points left!" << std::endl;
+    else if (hit_points <= 0)
+        std::cout << "No hit points left!" << std::endl;
+}
+
+void FragTrap::highFivesGuys(void) {
+    std::cout << name << " is now giving a positive high five!" << std::endl;
 }

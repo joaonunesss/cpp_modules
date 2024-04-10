@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:58:46 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/02/06 14:10:05 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/03 11:43:37 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/04 15:04:10 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,29 @@
 #include <cmath>
 
 class Fixed {
-    
-    public:
-    
-        Fixed();
-        Fixed(const int value); //converts int to fixed
-        Fixed(const float value); //converts float to fixed
-        Fixed(const Fixed &other);
-        ~Fixed();
 
-        Fixed &operator=(const Fixed &other);
-        
-        float toFloat(void) const;
-        int toInt(void) const;
-        void setRawBits(int const raw);    
-        int getRawBits(void);
-
-        friend std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
+  public:
+    Fixed();
+    ~Fixed();
+    Fixed(const Fixed &other);
+    Fixed&operator=(const Fixed &other);
     
-    private:
+    int getRawBits( void ) const;
+    void setRawBits( int const raw );
 
-        int value;
-        static int const bits = 8;
+    Fixed(const int other_int); //converts int to fixed
+    Fixed(const float other_float); //converts float to fixed
+
+    float toFloat( void ) const;
+    int toInt( void ) const;
+
+
+  private:
+    int int_nbr;
+    static const int bit_nbr = 8;
     
 };
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif

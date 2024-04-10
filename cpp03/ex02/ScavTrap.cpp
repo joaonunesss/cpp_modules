@@ -5,31 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 14:21:43 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/18 14:46:16 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/08 16:15:54 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/09 12:50:17 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string set_name):ClapTrap(set_name){
-    std::cout << "ScavTrap Default constructor called" << std::endl;
-    new_name = set_name;
+ScavTrap::ScavTrap() : ClapTrap() {
+    std::cout << "ScavTrap default constructor called!" << std::endl;
+    name = "Default_Scav";
 }
 
-ScavTrap::~ScavTrap(){
-    std::cout << "ScavTrap Destructor called" << std::endl;
+ScavTrap::~ScavTrap() {
+    std::cout << "ScavTrap default destructor called!" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &other):ClapTrap(other){
-    std::cout << "ScavTrap Copy constructor called" << std::endl;
-    *this = other;
+ScavTrap::ScavTrap(std::string other_name) : ClapTrap(other_name) {
 }
 
-void ScavTrap::attack(const std::string& target){
-    std::cout << "ScavTrap " << new_name << " attack " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
+    std::cout << "ScavTrap copy constructor called!" << std::endl;
 }
 
-void ScavTrap::guardGate(){
-    std::cout << "ScavTrap is now in Gate keeper mode" << std::endl;
+ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
+    std::cout << "ScavTrap copy assignment operator called!" << std::endl;
+    if (this != &other) {
+        name = other.name;
+    }
+    return *this;
+}
+
+void ScavTrap::attack(const std::string& target) {
+    if (energy_points-- > 0 && hit_points > 0)
+    {
+        std::cout << name << " attacks ";
+        std::cout << target << " causing " << attack_damage << " points of damage!" << std::endl;
+    }
+    else if (energy_points <= 0)
+        std::cout << "No energy points left!" << std::endl;
+    else if (hit_points <= 0)
+        std::cout << "No hit points left!" << std::endl;
+}
+
+void ScavTrap::guardGate() {
+    std::cout << name << " is now in Gate keeper mode." << std::endl;
 }

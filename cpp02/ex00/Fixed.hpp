@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:58:46 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/02/05 12:00:07 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/03 11:43:37 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/03 14:17:01 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,19 @@
 #include <iostream>
 
 class Fixed {
-    
-    public:
-    
-        Fixed();
-        Fixed(const Fixed &other);
-        Fixed &operator=(const Fixed &other);
-        ~Fixed();
-        int getRawBits(void);
-        void setRawBits(int const raw);    
 
-    private:
+  public:
+    Fixed();
+    ~Fixed();
+    Fixed(const Fixed &other);
+    Fixed&operator=(const Fixed &other);
+    
+    int getRawBits( void ) const;
+    void setRawBits( int const raw );
 
-        int value;
-        static int const bits = 8;
+  private:
+    int int_nbr;
+    static const int bit_nbr = 8;
     
 };
 
