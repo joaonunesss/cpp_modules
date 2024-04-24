@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:03:31 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/04/09 12:49:48 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:24:55 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ FragTrap::~FragTrap(){
 }
 
 FragTrap::FragTrap(std::string other_name) : ClapTrap(other_name){
-    std::cout << "FragTrap default constructor called" << std::endl;
+    std::cout << "FragTrap name constructor called" << std::endl;
     name = other_name;
 }
 

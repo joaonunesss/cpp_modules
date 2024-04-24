@@ -1,9 +1,11 @@
 {
     "files.associations": {
+        "COMMIT_EDITMSG": "git-commit",
         "typeinfo": "cpp",
         "iostream": "cpp",
         "ostream": "cpp",
         "fstream": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "new": "cpp"
     }
 }

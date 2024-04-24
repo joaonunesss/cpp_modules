@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:03:28 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/04/09 12:32:11 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/04/16 11:55:48 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : virtual public ClapTrap {
+class FragTrap : public virtual ClapTrap {
 
     public:
         FragTrap();

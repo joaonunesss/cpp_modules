@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 12:03:42 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/04/12 12:03:48 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/22 14:32:27 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/23 14:40:19 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
 
-#include <iostream>
+#include "IMateriaSource.hpp"
 
-class WrongAnimal {
-
+class MateriaSource : public IMateriaSource {
+    
     public:
-        WrongAnimal();
-        WrongAnimal(std::string other_type);
-        ~WrongAnimal();
-        WrongAnimal(const WrongAnimal &other);
-        WrongAnimal&operator=(const WrongAnimal &other);
+        MateriaSource();
+        ~MateriaSource();
+        MateriaSource(const MateriaSource &other);
+        MateriaSource& operator=(const MateriaSource &other);
 
-        const std::string getType() const;
-        void makeSound() const;
-        
-    protected:
+        void learnMateria(AMateria* materia);
+        AMateria* createMateria(std::string const & type);
+    
+    private:
         std::string type;
+        AMateria *materias[4];
 };
 
 #endif

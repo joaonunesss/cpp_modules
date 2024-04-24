@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:44:51 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/04/09 13:11:17 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:36:08 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ DiamondTrap::DiamondTrap() {
 }
 
 DiamondTrap::DiamondTrap(std::string other_name) {
-    std::cout << "DiamondTrap default constructor called" << std::endl;
+    std::cout << "DiamondTrap name constructor called" << std::endl;
     name = other_name;
     ClapTrap::name = other_name + "_clap_name";
 }
@@ -35,7 +35,7 @@ void DiamondTrap::attack(const std::string &target){
     ScavTrap::attack(target);
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other ){
+DiamondTrap::DiamondTrap(const DiamondTrap &other ) {
     std::cout << "DiamondTrap copy constructor called" << std::endl;
     *this = other;
 }

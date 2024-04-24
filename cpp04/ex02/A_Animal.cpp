@@ -1,46 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   A_A_Animal.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:18:51 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/04/12 12:38:52 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:42:25 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "A_Animal.hpp"
 
-Animal::Animal(){
-    std::cout << "Animal default constructor called!" << std::endl;
+A_Animal::A_Animal(){
+    std::cout << "A_Animal default constructor called!" << std::endl;
     type = "Default_type";
 }
 
-Animal::~Animal(){
-    std::cout << "Animal default destructor called!" << std::endl;
+A_Animal::~A_Animal(){
+    std::cout << "A_Animal default destructor called!" << std::endl;
 }
 
-Animal::Animal(std::string other_type){
-    std::cout << "Animal default constructor called!" << std::endl;
+A_Animal::A_Animal(std::string other_type){
+    std::cout << "A_Animal default constructor called!" << std::endl;
     type = other_type;
 }
 
-Animal::Animal(const Animal &other){
-    std::cout << "Animal copy constructor called!" << std::endl;
+A_Animal::A_Animal(const A_Animal &other){
+    std::cout << "A_Animal copy constructor called!" << std::endl;
     *this = other;
 }
 
-Animal& Animal::operator=(const Animal &other){
-    std::cout << "Animal copy assignment operator called!" << std::endl;
+A_Animal& A_Animal::operator=(const A_Animal &other){
+    std::cout << "A_Animal copy assignment operator called!" << std::endl;
     type = other.type;
     return *this;
 }
 
-const std::string Animal::getType() const {
+const std::string A_Animal::getType() const {
     return type;
-}
-
-void Animal::makeSound() const {
-        std::cout << "Default animal sound... GRRRRRR" << std::endl;
 }

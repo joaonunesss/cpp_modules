@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 12:00:56 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/19 14:25:49 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/11 14:15:12 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/16 11:52:18 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ class Dog : public Animal {
 
     public:
         Dog();
+        Dog(std::string other_type);
         ~Dog();
-        Dog(Dog &other);
-        void makeSound() const;
+        Dog(const Dog &other);
+        Dog&operator=(const Dog &other);
 
-    protected:
-    
+        void makeSound() const;
 };
 
 #endif

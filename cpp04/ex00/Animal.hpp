@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 11:59:04 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/19 14:29:56 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/11 14:15:12 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/16 11:52:25 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@
 #include <iostream>
 
 class Animal {
-    
+
     public:
         Animal();
-        virtual ~Animal();
-        Animal(Animal &other);
+        Animal(std::string other_type);
+        ~Animal();
+        Animal(const Animal &other);
+        Animal&operator=(const Animal &other);
+
+        const std::string getType() const;
         virtual void makeSound() const;
-        std::string getType() const;
-    
+        
     protected:
         std::string type;
 };

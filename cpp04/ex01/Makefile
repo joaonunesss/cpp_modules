@@ -6,17 +6,17 @@
 #    By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 13:13:34 by jmarinho          #+#    #+#              #
-#    Updated: 2024/04/19 13:45:52 by jmarinho         ###   ########.fr        #
+#    Updated: 2024/04/19 13:46:02 by jmarinho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
-SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS = $(SRC:.cpp=.o) 
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 CXX = c++
 
-	
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+
 all : $(NAME)
 
 $(NAME) : $(OBJS)

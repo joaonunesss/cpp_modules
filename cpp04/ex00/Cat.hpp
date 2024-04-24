@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 12:00:29 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/03/19 14:25:53 by jmarinho         ###   ########.fr       */
+/*   Created: 2024/04/11 14:15:12 by jmarinho          #+#    #+#             */
+/*   Updated: 2024/04/16 11:52:20 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 #include "Animal.hpp"
 
 class Cat : public Animal {
-    
+
     public:
         Cat();
+        Cat(std::string other_type);
         ~Cat();
-        Cat(Cat &other);
+        Cat(const Cat &other);
+        Cat&operator=(const Cat &other);
+
         void makeSound() const;
-    
-    protected:
 };
 
 #endif

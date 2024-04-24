@@ -10,32 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "A_Animal.hpp"
 #include "Dog.hpp"
 
 
-Dog::Dog() : Animal() {
+Dog::Dog() : A_Animal() {
     std::cout << "Dog default constructor called!" << std::endl;
     type = "Dog";
+    dog_brain = new Brain();
 }
 
 Dog::~Dog() {
     std::cout << "Dog default destructor called!" << std::endl;
+    delete dog_brain;
 }
 
-Dog::Dog(std::string other_type) : Animal(other_type) {
-    std::cout << "Dog default constructor called!" << std::endl;
-    type = other_type;
-}
-
-Dog::Dog(const Dog &other) : Animal(other) {
+Dog::Dog(const Dog &other) : A_Animal(other) {
     std::cout << "Dog copy constructor called!" << std::endl;
+
     *this = other;
 }
 
 Dog& Dog::operator=(const Dog &other) {
     std::cout << "Dog copy assignment operator called!" << std::endl;
+
     type = other.type;
+
+    dog_brain = new Brain(*other.dog_brain);
+
     return *this;
 }
 
