@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:59:22 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/04/15 14:05:58 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:02:21 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int main()
     std::cout << i->getType() << " " << std::endl;
     
     std::cout << GREEN;
-    i->makeSound();
     j->makeSound();
+    i->makeSound();
     meta->makeSound();
     std::cout << RESET;
 
@@ -48,11 +48,14 @@ int main()
 
     Animal *animal_array[4];
 
+    
+    std::cout << RED << "/////////////DOG//////////" << RESET << std::endl;
     for (int i = 0; i < 2; i++)
-        animal_array[i] = new Dog();;
+        animal_array[i] = new Dog();
+    std::cout << RED << "/////////////CAT//////////" << RESET << std::endl;
     for (int i = 2; i < 4; i++)
         animal_array[i] = new Cat();;
-
+    std::cout << RED << "/////////////ANIMAL//////////" << RESET << std::endl;
     for (int i = 0; i < 4; i++)
         delete animal_array[i];
 

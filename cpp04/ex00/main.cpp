@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:59:22 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/04/12 12:47:21 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/04/30 11:52:28 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,6 @@ int main()
     std::cout << wc02.getType() << " " << std::endl;
 
     std::cout << std::endl;
-
-    
 
     return 0;
 }

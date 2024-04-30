@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:59:22 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/04/15 17:39:51 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:07:57 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int main()
     delete j;
     delete i;
 
-    //A_Animal animal;
+
+    //It's not possible to create an A_Animal object because the class is abstract
+    //A_Animal not_possible;
 
 }
