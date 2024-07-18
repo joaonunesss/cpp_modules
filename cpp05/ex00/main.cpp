@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:51:24 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/07/18 14:25:50 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:36:00 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ int main()
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
+    std::cout << bur;
 }

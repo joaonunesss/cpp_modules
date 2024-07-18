@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 11:39:44 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/07/18 14:10:01 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:30:31 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
 }
 
 std::ostream& operator<<(std::ostream &os, const Bureaucrat &bur) {
-    os << "Bureaucrat: " << bur.name << ", Grade: " << bur.grade;
+    os << "Bureaucrat: " << bur.name << ", Grade: " << bur.grade << std::endl;
     return os;
 }
 
