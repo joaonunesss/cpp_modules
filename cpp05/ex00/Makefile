@@ -6,7 +6,7 @@
 #    By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 11:34:38 by jmarinho          #+#    #+#              #
-#    Updated: 2024/07/16 13:51:06 by jmarinho         ###   ########.fr        #
+#    Updated: 2024/07/18 13:49:45 by jmarinho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ OBJS = $(SRC:.cpp=.o)
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 CXX = c++
 
-SRC = main.cpp Bureucrat.cpp
+SRC = main.cpp Bureaucrat.cpp
 
 all : $(NAME)
 
