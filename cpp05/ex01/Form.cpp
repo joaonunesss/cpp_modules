@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:21:04 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/07/18 14:49:20 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/07/26 17:06:11 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ Form::Form(const std::string new_name, bool new_is_signed, const int new_grade_t
 }
 
 const char* Form::GradeTooHighException::what() const throw() {
-    return "Grade High Low!";
+    return "Exeption throwed: Grade High Low!";
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-    return "Grade Too Low!";
+    return "Exeption throwed: Grade Too Low!";
 }
 
 Form& Form::operator=(const Form &other)
