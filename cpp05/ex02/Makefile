@@ -27,7 +27,7 @@ clean:
 	rm -f $(OBJFILES)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) Diodos_shrubbery
 
 re: fclean all
 

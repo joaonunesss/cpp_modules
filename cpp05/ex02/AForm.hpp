@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:07:05 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/07/26 17:02:23 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/07/30 11:55:14 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class AForm {
 
         void                execute(Bureaucrat const & executor) const;
 
-        virtual void Class_Executer(std::string target) const = 0;
+        virtual void        Class_Executer(std::string target) const = 0;
 		
     private:
 	

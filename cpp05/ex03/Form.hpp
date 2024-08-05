@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:07:05 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/07/18 14:44:20 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:11:10 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class Form {
         Form(const std::string new_name, bool new_is_signed, const int new_grade_to_sign, const int new_grade_to_execute);
 		Form&operator=(const Form &other);
         
-		friend std::ostream& operator<<(std::ostream &os, const Form &bur);
 
         class GradeTooHighException : public std::exception {
         public:
@@ -53,5 +52,7 @@ class Form {
         const int           grade_to_sign;
         const int           grade_to_execute;      
 };
+
+std::ostream& operator<<(std::ostream &os, const Form &bur);
 
 #endif

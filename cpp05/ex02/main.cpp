@@ -123,5 +123,6 @@ int main()
     
     std::cout << RESET;
 
-    delete(boss);    
+    delete(boss);
+    delete(form);
 }
