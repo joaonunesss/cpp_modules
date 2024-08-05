@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:51:24 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/07/30 12:10:09 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:29:29 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int main()
     
     std::cout << GREEN;
     rrf = someRandomIntern.makeForm("Pres_Form", "joao3");
+
+    std::cout << RED;
+    rrf = someRandomIntern.makeForm("Not_existing", "joao3");
 
     std::cout << RESET;
 }

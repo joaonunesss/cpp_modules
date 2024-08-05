@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:27:28 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/07/30 12:15:38 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:28:55 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ AForm *Intern::makeForm(std::string form_name, std::string form_target) {
                 delete (forms[i]);
         }
         if (result == NULL)
-            std::cout << "Intern could not create " << form_name << std::endl;
+            std::cerr << "Intern could not create " << form_name << std::endl;
 
         return (result);
 }

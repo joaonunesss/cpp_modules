@@ -33,7 +33,6 @@ class Bureaucrat {
 
     void              incrementGrade();
     void              decrementGrade();
-    friend std::ostream& operator<<(std::ostream &os, const Bureaucrat &bur);
 
     class GradeTooHighException : public std::exception {
         const char* what() const throw();
@@ -52,5 +51,7 @@ class Bureaucrat {
     int grade;
     
 };
+
+std::ostream& operator<<(std::ostream &os, const Bureaucrat &bur);
 
 #endif
