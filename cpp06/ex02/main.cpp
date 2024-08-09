@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:12:42 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/09 16:35:23 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:41:39 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,13 @@ void	identify(Base *p)
 
 void	identify(Base &p)
 {
-	std::cout << "Identify with Base ref";
-
 	try
 	{
 		A &a = dynamic_cast<A &>(p);
 		(void)a;
 		std::cout << "A" << std::endl;
 	}
-	catch (const std::exception& e)
+	catch (const std::bad_cast& e)
 	{
 		try
 		{
@@ -73,7 +71,7 @@ void	identify(Base &p)
 			(void)b;
 			std::cout << "B" << std::endl;
 		}
-		catch (const std::exception& e)
+		catch (const std::bad_cast& e)
 		{
 			try
 			{
@@ -81,7 +79,7 @@ void	identify(Base &p)
 				(void)c;
 				std::cout << "C" << std::endl;
 			}
-			catch (const std::exception& e)
+			catch (const std::bad_cast& e)
 			{
 				std::cout << "Invalid type" << std::endl;
 			}
