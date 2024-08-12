@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:12:42 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/12 14:42:54 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/08/12 15:05:19 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main()
 	std::cout << "a array value is " << a[0] << std::endl;
 	std::cout << "a array size is " << a.size() << std::endl;
 
-	Array<int> b;
+	Array<int> b(1);
 
 	b = a;
 	std::cout << "b array value b4 changes is " << b[0] << std::endl;

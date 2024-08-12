@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:07:18 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/12 14:27:57 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/08/12 15:07:21 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ Array<T>::Array() : array(new T[0]()), array_size(0) {
 
 template<typename T>
 Array<T>::~Array() {
+	delete[] array;
 	std::cout << RED << "Default Destructor has been called" << RESET << std::endl;
 }
 
@@ -72,7 +73,7 @@ template<typename T>
 Array<T> &Array<T>::operator=(Array &other) {
 	if (this != &other)
 	{
-		delete this->array;
+		delete[] this->array;
 		this->array = new T[other.array_size]();
 		this->array_size = other.array_size;
 		for (unsigned int i = 0; i < other.array_size; i++)
