@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:12:42 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/13 12:52:29 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:26:19 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,29 @@
 
 int main()
 {
-	Span sp = Span(5);
+	int nbr_of_elements = 11000;
 
-	//TRYING TO SORT ONLY ONE NBR
+	
+	Span sp = Span(nbr_of_elements);
+	std::vector<int> vector(nbr_of_elements);
+	
+	srand(time(NULL));
+	for(int i = 0; i < (int)vector.size(); i++)
+		vector[i] = rand();
+
+	try
+	{
+		sp.addNumber(vector.begin(), vector.end());
+		std::cout << "Shortest span is " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span is " << sp.longestSpan() << std::endl;
+	}
+	catch(const std::exception &e) {
+		std::cerr << RED;
+		std::cerr << e.what() << std::endl;
+		std::cerr << RESET;
+	}
+
+/*  	//TRYING TO SORT ONLY ONE NBR
 	try
 	{
 		sp.addNumber(6);
@@ -60,7 +80,7 @@ int main()
 		std::cerr << RED;
 		std::cerr << e.what() << std::endl;
 		std::cerr << RESET;
-	}
+	} */
 
 /* 	Span sp = Span(5);
 	

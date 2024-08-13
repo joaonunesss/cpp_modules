@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 17:44:08 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/13 12:51:37 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:28:50 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,16 @@ void	Span::addNumber(int nbr) {
 	std::cout << RESET;
 }
 
-int Span::shortestSpan() {
+void 	Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+		
+    if (numbers.size() == N)
+        throw FullContainer();
+
+    numbers.insert(numbers.end(), begin, end);
+}
+
+
+int		Span::shortestSpan() {
 	
 	int shortest;
 	int span;
@@ -52,7 +61,7 @@ int Span::shortestSpan() {
 	return shortest;
 }
 
-int Span::longestSpan() {
+int		Span::longestSpan() {
 	
 	if (N < 2)
 		throw NotEnoughN();
