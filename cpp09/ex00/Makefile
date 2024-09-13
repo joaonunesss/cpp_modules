@@ -5,17 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/08 11:34:38 by jmarinho          #+#    #+#              #
-#    Updated: 2024/09/03 11:48:09 by jmarinho         ###   ########.fr        #
+#    Created: 2024/08/06 12:12:36 by jmarinho          #+#    #+#              #
+#    Updated: 2024/09/06 14:53:45 by jmarinho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = a.out
+NAME = btc
 OBJS = $(SRC:.cpp=.o) 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 CXX = c++
 
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp BitcoinExchange.cpp
 
 all : $(NAME)
 

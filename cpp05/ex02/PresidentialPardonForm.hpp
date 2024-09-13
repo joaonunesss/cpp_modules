@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 15:07:07 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/07/26 16:27:48 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/09/03 12:01:59 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class PresidentialPardonForm : public AForm {
 		PresidentialPardonForm(const PresidentialPardonForm &other);
 		PresidentialPardonForm&operator=(const PresidentialPardonForm &other);
 
-        PresidentialPardonForm(std::string name);
+        PresidentialPardonForm(std::string target);
     
         void Class_Executer(std::string target) const;
 

@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:51:24 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/07/26 17:23:00 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/09/03 12:04:03 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int main()
 
     std::cout << BLUE;
 
-    ShrubberyCreationForm sh_form;
+    ShrubberyCreationForm sh_form("home");;
     ShrubberyCreationForm sh_copy = sh_form;
     
     std::cout << sh_form;
@@ -75,7 +75,7 @@ int main()
 
     std::cout << RED;
 
-    RobotomyRequestForm rbt_form;
+    RobotomyRequestForm rbt_form("Jack");
     RobotomyRequestForm rbt_copy = rbt_form;
     
     std::cout << rbt_form;
@@ -99,7 +99,7 @@ int main()
 
     std::cout << GREEN;
 
-    PresidentialPardonForm pres_form;
+    PresidentialPardonForm pres_form("Jose");
     PresidentialPardonForm pres_copy = pres_form;
     
     std::cout << pres_form;

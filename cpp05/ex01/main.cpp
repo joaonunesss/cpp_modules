@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:51:24 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/07/18 14:49:53 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/09/03 11:46:49 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,31 +65,6 @@ int main()
         std::cerr << "Caught exception: " << e.what() << std::endl;
     }
 
-    std::cout << std::endl;
-
-    std::cout << "Bureaucrat with grade 150 trying to sign a form with grade_to_sing 10 " << std::endl;
-    std::cout << std::endl;
-    try {
-         def.signForm(&form); //This will not be successfull
-    } catch (const Form::GradeTooLowException& e) {
-        std::cerr << "Caught exception: " << e.what() << std::endl;;
-    } catch (const Form::GradeTooHighException& e) {
-        std::cerr << "Caught exception: " << e.what() << std::endl;
-    }
-    std::cout << std::endl;
-
-    
-    std::cout << "Bureaucrat with grade 1 trying to sign a form with grade_to_sing 10 " << std::endl;
-    std::cout << std::endl;
-    std::cout << "def2 sign status " << form.getIs_Signed() << std::endl;
-    try {
-         def2.signForm(&form); //This will be successfull
-    } catch (const Form::GradeTooLowException& e) {
-        std::cerr << "Caught exception: " << e.what() << std::endl;;
-    } catch (const Form::GradeTooHighException& e) {
-        std::cerr << "Caught exception: " << e.what() << std::endl;
-    }
-    std::cout << "def2 sign status " << form.getIs_Signed() << std::endl;
     std::cout << std::endl;
 
     delete (new_form);

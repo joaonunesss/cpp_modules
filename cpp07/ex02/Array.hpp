@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:07:18 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/12 15:07:21 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:26:23 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define ARRAY_HPP
 
 #include <iostream>
-
 
 # define RED "\033[31m"
 # define GREEN "\033[32m"

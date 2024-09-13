@@ -6,13 +6,13 @@
 #    By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 11:34:38 by jmarinho          #+#    #+#              #
-#    Updated: 2024/07/17 13:31:17 by jmarinho         ###   ########.fr        #
+#    Updated: 2024/09/03 11:48:04 by jmarinho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
 OBJS = $(SRC:.cpp=.o) 
-CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX = c++
 
 SRC = main.cpp Bureaucrat.cpp Form.cpp

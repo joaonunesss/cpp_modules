@@ -1,11 +1,16 @@
 {
     "files.associations": {
-        "COMMIT_EDITMSG": "git-commit",
-        "typeinfo": "cpp",
-        "iostream": "cpp",
-        "ostream": "cpp",
-        "fstream": "cpp",
-        "iosfwd": "cpp",
-        "new": "cpp"
-    }
+		"COMMIT_EDITMSG": "git-commit",
+		"typeinfo": "cpp",
+		"iostream": "cpp",
+		"ostream": "cpp",
+		"fstream": "cpp",
+		"iosfwd": "cpp",
+		"new": "cpp",
+		"iterator": "cpp",
+		"algorithm": "cpp",
+		"vector": "cpp",
+		"*.tcc": "cpp",
+		"cstdlib": "cpp"
+	}
 }
