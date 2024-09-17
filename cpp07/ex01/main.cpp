@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:12:42 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/09 17:17:59 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:34:57 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main()
 {    
-	int int_array[] = {0, 0, 0};
+	std::string int_array[] = {"a", "b", "c"};
 
-	::iter(int_array, 3, &::print_elements_of_array<int>);
+	iter(int_array, 3, &print_elements_of_array<std::string>);
 	
 	return 0;
 }

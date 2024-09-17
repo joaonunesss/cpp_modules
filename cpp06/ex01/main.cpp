@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:12:42 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/09 14:47:40 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/09/16 17:37:37 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@
 int main()
 {    
     Data *data = new Data;
-	Serializer ser;
 
-
-	//WITH INT
 	data->x = 42;
 	data->str = "string";
 
@@ -33,11 +30,11 @@ int main()
     std::cout << "Data string is: " << data->str << std::endl << std::endl;
     
     std::cout << BLUE;
-    uintptr_t uint_ptr = ser.serialize(data);
+    uintptr_t uint_ptr = Serializer::serialize(data);
     std::cout << "Serialized uintptr_t is: " << uint_ptr << std::endl << std::endl;
     
     std::cout << YELLOW;
-	Data* data2 = ser.deserialize(uint_ptr);
+	Data* data2 = Serializer::deserialize(uint_ptr);
     std::cout << "Deserialize data value is: " << data2->x << std::endl;
 	std::cout << "Deserialize data string is: " << data2->str << std::endl;
 

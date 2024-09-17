@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:13:21 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/09 12:07:52 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/09/17 11:52:47 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,19 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <cmath>
 
 #define INT_MAX 2147483647
 #define INT_MIN -2147483648
 
 class ScalarConverter {
-	public:
+	private:
+		ScalarConverter();
+		~ScalarConverter();
+		ScalarConverter(const ScalarConverter &other);
+		ScalarConverter&operator=(const ScalarConverter &other);
+
+	public:	
 		static void convert(std::string literal);
 };
 

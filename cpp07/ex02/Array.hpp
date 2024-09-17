@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:07:18 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/12 17:26:23 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:13:19 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Array {
 
 		T &operator[](unsigned int index);
 
-		unsigned int size();
+		unsigned int size() const;
 
 		class Out_Of_Bounds : public std::exception {
 			public:
@@ -96,6 +96,6 @@ char const *Array<T>::Out_Of_Bounds::what() const throw() {
 }
 
 template<typename T>
-unsigned int Array<T>::size() {
+unsigned int Array<T>::size() const {
 	return array_size;
 }

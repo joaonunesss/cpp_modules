@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:40:18 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/09 13:42:58 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:08:49 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,17 @@
 
 /* PRINT AND CONVERT */
 
-static void print_if_Char(char ch)
+ScalarConverter::ScalarConverter() {}
+ScalarConverter::~ScalarConverter() {}
+ScalarConverter::ScalarConverter(const ScalarConverter &other){
+	*this = other;
+}
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter &other) {
+	(void) other;
+	return *this;
+}
+
+static void printIfChar(char ch)
 {
     std::cout << "char: '" << ch << "'" << std::endl;
     std::cout << "int: " << static_cast<int>(ch) << std::endl;
@@ -22,7 +32,7 @@ static void print_if_Char(char ch)
     std::cout << "double: " << static_cast<double>(ch) << ".0" << std::endl;
 }
 
-static void print_if_Int(int nbr)
+static void printIfInt(int nbr)
 {
     if (isprint(nbr))
         std::cout << "char: '" << static_cast<char>(nbr)  << "'" << std::endl; 
@@ -33,26 +43,48 @@ static void print_if_Int(int nbr)
     std::cout << "double: " << static_cast<double>(nbr) << ".0" << std::endl;
 }
 
-static void print_if_Float(float nbr)
+static void printIfFloat(float nbr)
 {
+	double fractionalPart, intPart;
+
+	fractionalPart = std::modf(nbr, &intPart);
     if (isprint(nbr))
         std::cout << "char: '" << static_cast<char>(nbr) << "'" << std::endl;
     else
         std::cout << "char: Non displayable" << std::endl;
     std::cout << "int: " << static_cast<int>(nbr) << std::endl;
-    std::cout << "float: " << nbr << ".0f" << std::endl;
-    std::cout << "double: " << static_cast<double>(nbr) << ".0" << std::endl;
+	if (fractionalPart == 0)
+	{
+		std::cout << "float: " << nbr << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(nbr) << ".0" << std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << nbr << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(nbr) << std::endl;
+	}
 }
 
-static void print_if_Double(double nbr)
+static void printIfDouble(double nbr)
 {
+	double fractionalPart, intPart;
+
+	fractionalPart = std::modf(nbr, &intPart);
     if (isprint(nbr))
         std::cout << "char: '" << static_cast<char>(nbr)  << "'" << std::endl;
     else
         std::cout << "char: Non displayable" << std::endl;
     std::cout << "int: " << static_cast<int>(nbr) << std::endl;
-    std::cout << "float: " << static_cast<float>(nbr) << ".0f" << std::endl;
-    std::cout << "double: " << nbr << ".0" << std::endl;
+	if (fractionalPart == 0)
+	{
+		std::cout << "float: " << static_cast<float>(nbr) << ".0f" << std::endl;
+		std::cout << "double: " << nbr << ".0" << std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << static_cast<float>(nbr) << "f" << std::endl;
+		std::cout << "double: " << nbr << std::endl;
+	}
 }
 
 static void printLiteralFloat(std::string literal)
@@ -80,7 +112,7 @@ static void printLimitDouble(double limits)
 {
 	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: impossible" << std::endl;
-	std::cout << "float: " << limits << "f" << std::endl;
+	std::cout << "float: " << static_cast<float>(limits) << "f" << std::endl;
 	std::cout << "double: " << limits << std::endl;
 }
 
@@ -88,7 +120,7 @@ static void printLimitDouble(double limits)
 
 bool detectChar(std::string literal)
 {
-    if (literal.length() != 1 || isdigit(literal[0]))
+    if (literal.length() != 1 || std::isdigit(literal[0]))
         return false;
     return true;
 }
@@ -101,7 +133,7 @@ bool detectInt(std::string literal)
         i = 1;
     while (literal[i])
     {
-        if (!isdigit(literal[i]))
+        if (!std::isdigit(literal[i]))
             return false;
         i++;
     }
@@ -115,6 +147,8 @@ bool detectFloat(std::string literal)
 
     if (literal[literal.length() - 1] != 'f')
         return false;
+	else if (literal.at(0) == '-')
+        i = 1;
     while (literal[++i])
     {
         if (literal[i] == '.' && flag)
@@ -124,7 +158,7 @@ bool detectFloat(std::string literal)
             flag = true;
             continue;
         }
-        if (!isdigit(literal[i]) && i != (int)(literal.length() - 1))
+        if (!std::isdigit(literal[i]) && i != (int)(literal.length() - 1))
             return false;
     }
     return true;
@@ -135,7 +169,9 @@ bool detectDouble(std::string literal)
 	int i = -1;
 	bool   flag = false;
 
-	 while (literal[++i])
+	if (literal.at(0) == '-')
+       		i = 0;
+	while (literal[++i])
     {
         if (literal[i] == '.' && flag)
             return false;
@@ -144,7 +180,7 @@ bool detectDouble(std::string literal)
             flag = true;
             continue;
         }
-        if (!isdigit(literal[i]))
+        if (!std::isdigit(literal[i]))
             return false;
     }
     return true;
@@ -163,45 +199,63 @@ int actualType(std::string literal)
     else if (detectDouble(literal))
         return 3;    
 	else
+		return 7;
+}
+
+int actualLimits(std::string literal)
+{
+	if (literal == "-inff" || literal == "+inff" || literal == "nanf")
 		return 4;
+	else if (literal == "-inf" || literal == "+inf" || literal == "nan")
+		return 5;
+	return 7;
 }
 
 /* CHOOSE RIGHT FUNCTION BY TYPE */
 
 void ScalarConverter::convert(std::string literal)
 {
-    double limits;
+	double limits;
 
     limits = strtod(literal.c_str(), NULL);
-    if (limits > INT_MAX || limits < INT_MIN)
-        printLimitDouble(limits);
-	else if (literal == "-inff" || literal == "+inff" || literal == "nanf")
-		printLiteralFloat(literal);
-	else if (literal == "-inf" || literal == "+inf" || literal == "nan")
-		printLiteralDouble(literal);
-    else
-    {
-        switch (actualType(literal))
-        {
-            case 0:
-                print_if_Char(literal[0]);
-                break;
-            
-            case 1:
-                print_if_Int(atoi(literal.c_str()));
-                break;
+	if (limits >= INT_MAX || limits <= INT_MIN)
+	{
+		printLimitDouble(limits);
+        return;
+	}
 
-            case 2:
-                print_if_Float(atof(literal.c_str()));
-                break;
-            
-            case 3:
-                print_if_Double(strtod(literal.c_str(), NULL));
-                break;
-            
-            default:
-                std::cout << "Invalid input" << std::endl;
-                break;    
-        }
-    }
+	switch (actualType(literal))
+	{
+		case 0:
+			printIfChar(literal[0]);
+			return;
+		
+		case 1:
+			printIfInt(atoi(literal.c_str()));
+			return;
+
+		case 2:
+			printIfFloat(atof(literal.c_str()));
+			return;
+		
+		case 3:
+			printIfDouble(strtod(literal.c_str(), NULL));
+			return;
+		    
+	}
+	
+	switch (actualLimits(literal))
+	{
+		case 4:
+			printLiteralFloat(literal);
+			break;
+
+		case 5:
+			printLiteralDouble(literal);
+			break;
+		
+		case 7:
+			std::cout << "Invalid input" << std::endl;
+			break;
+	}
 }

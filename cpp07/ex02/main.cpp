@@ -6,7 +6,7 @@
 /*   By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:12:42 by jmarinho          #+#    #+#             */
-/*   Updated: 2024/08/12 15:05:19 by jmarinho         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:37:53 by jmarinho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@ int main()
 {
 	Array<std::string> c;
 	Array<int> a(1);
+	Array<int> z;
+
+	int * zz = new int();
+	
+	std::cout << "*zz " << *zz << std::endl;
 	
 	std::cout << "c array size is " << c.size() << std::endl;
-
 
 	a[0] = 42;
 	std::cout << "a array value is " << a[0] << std::endl;
@@ -62,7 +66,6 @@ int main()
         count[10] = 100;
 
     } catch (const std::exception &e) {
-		
         std::cerr << e.what() << std::endl;
     }
 }
