@@ -6,13 +6,13 @@
 #    By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:12:36 by jmarinho          #+#    #+#              #
-#    Updated: 2024/08/09 16:31:43 by jmarinho         ###   ########.fr        #
+#    Updated: 2024/09/30 14:32:14 by jmarinho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
 OBJS = $(SRC:.cpp=.o) 
-CXXFLAGS = -Wall -Wextra -Werror -g
+CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 CXX = c++
 
 SRC = main.cpp OtherClasses.cpp

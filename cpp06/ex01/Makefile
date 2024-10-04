@@ -6,13 +6,13 @@
 #    By: jmarinho <jmarinho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:12:36 by jmarinho          #+#    #+#              #
-#    Updated: 2024/08/09 14:25:26 by jmarinho         ###   ########.fr        #
+#    Updated: 2024/09/30 14:32:16 by jmarinho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
 OBJS = $(SRC:.cpp=.o) 
-CXXFLAGS = -Wall -Wextra -Werror -g
+CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 CXX = c++
 
 SRC = main.cpp Serializer.cpp
