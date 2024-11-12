@@ -28,15 +28,17 @@ class PmergeMe {
 		~PmergeMe();
 		PmergeMe(const PmergeMe &other);
 		PmergeMe &operator=(const PmergeMe &other);
+
+		static bool			FordJohnsonSelector(char **av, int ac);
 	
 	private:
-		static void			VectorFordJohnson(std::vector<int> vector);
-		static std::vector<int>	divideVectors(std::vector<int> vector);
+		void				VectorFordJohnson(std::vector<int> vector);
+		std::vector<int>	divideVectors(std::vector<int> vector);
 
-		static void			ListFordJohnson(std::list<int> list);
-		static std::list<int>		divideLists(std::list<int> list);
+		void				ListFordJohnson(std::list<int> list);
+		std::list<int>		divideLists(std::list<int> list);
 		
-		static std::vector<int>	jacobSequence(int size);
+		std::vector<int>	jacobSequence(int size);
 };
 
 

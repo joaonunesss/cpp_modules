@@ -25,7 +25,36 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
 	return *this;
 }
 
-/* A sequencia de Jacob e utilizada para calcular a posicao de determinado numero numa sequencia*/
+bool	PmergeMe::FordJohnsonSelector(char **av, int ac)
+{
+	std::vector<int>	vector;
+	std::list<int> 		list;
+
+	PmergeMe PmergeMe;
+
+	for (int i = 1; i < ac; i++)
+	{
+		if (std::string(av[i]).find_first_not_of("0123456789 ") != std::string::npos)
+		{
+			std::cerr << "Error. Invalid characters detected." << std::endl;
+			return EXIT_FAILURE;
+		}
+		vector.push_back(std::atoi(av[i]));
+		list.push_back(std::atoi(av[i]));
+	}
+		
+	if (vector.size() <= 1 || list.size() <= 1)
+	{
+		std::cerr << "Error. Empty or single-element vector, no sorting needed." << std::endl;
+		return EXIT_FAILURE;
+	}
+	
+	PmergeMe.VectorFordJohnson(vector);
+	std::cout << std::endl;
+	PmergeMe.ListFordJohnson(list);
+}
+
+/* A sequencia de Jacob e utilizada para calcular a posicao de determinado numero numa sequencia */
 std::vector<int> PmergeMe::jacobSequence(int size)
 {
 	std::vector<int> jacob;

@@ -41,28 +41,7 @@ int main (int ac, char **av)
 		return EXIT_FAILURE;
 	}
 
-	std::vector<int>	vector;
-	std::list<int> 		list;
-
-	for (int i = 1; i < ac; i++)
-	{
-		if (std::string(av[i]).find_first_not_of("0123456789 ") != std::string::npos)
-		{
-			std::cerr << "Error. Invalid characters detected." << std::endl;
-			return EXIT_FAILURE;
-		}
-		vector.push_back(std::atoi(av[i]));
-		list.push_back(std::atoi(av[i]));
-	}
-		
-	if (vector.size() <= 1 || list.size() <= 1)
-	{
-		std::cerr << "Error. Empty or single-element vector, no sorting needed." << std::endl;
+	if (PmergeMe::FordJohnsonSelector(av, ac))
 		return EXIT_FAILURE;
-	}
-	
-	PmergeMe::VectorFordJohnson(vector);
-	std::cout << std::endl;
-	PmergeMe::ListFordJohnson(list);
-
+	return EXIT_SUCCESS;
 }
