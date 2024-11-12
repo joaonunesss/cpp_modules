@@ -23,10 +23,10 @@ int main()
 	std::vector<int> numbers;
 	numbers.push_back(0);
 	numbers.push_back(1);
-	numbers.push_back(2);
+	numbers.push_back(5);
 	numbers.push_back(3);
 	numbers.push_back(4);
-	numbers.push_back(5);
+	numbers.push_back(2);
 
 	int nbr_to_find = 2;
 	int wrong_nbr_to_find = 10;
@@ -38,7 +38,8 @@ int main()
 		std::vector<int>::iterator result = easyfind(numbers, nbr_to_find);
 		if (result != numbers.end())
 		{
-			std::cout << "Found " << nbr_to_find << " at index " << *result << std::endl;
+			int index = std::distance(numbers.begin(), result);
+			std::cout << "Found " << nbr_to_find << " at index " << index << std::endl;
 			std::cout << "Return from funtion is " << *result << std::endl;
 		}
 	}

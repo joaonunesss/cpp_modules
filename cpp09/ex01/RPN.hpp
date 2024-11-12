@@ -14,7 +14,7 @@
 #define RPN_HPP
 
 #include <iostream>
-#include <stack>
+#include <stack> //stack is LIFO (Last In First Out)
 #include <cstdlib>
 #include <cctype>
 
@@ -25,9 +25,11 @@ class RPN {
         ~RPN();
         RPN(const RPN &other);
         RPN &operator=(const RPN &other);
-
-		double				calculate_rpn(std::string str);
-		bool				isValid(std::string str);
+	
+		static bool				isValid(std::string str);
+		
+	private:
+		int				calculate_rpn(std::string str);
 		
 		double				result;
 		std::stack<double>	stack;

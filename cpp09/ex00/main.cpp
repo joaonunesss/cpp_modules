@@ -27,10 +27,7 @@ int main(int ac, char **av)
 		std::cerr << "Error: could not open file." << std::endl;
 		return EXIT_FAILURE;
 	}
-	
-	BitcoinExchange bit;
 
-	if (bit.loadCsv(DATA_FILE) | bit.exchange(av[1]))
+	if (BitcoinExchange::loadCsv(DATA_FILE, av[1]))
 		return EXIT_FAILURE;
-
 }

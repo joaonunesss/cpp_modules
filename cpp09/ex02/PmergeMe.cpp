@@ -24,55 +24,83 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
 	(void) other;
 	return *this;
 }
- 
-std::vector<int>	PmergeMe::mergeVectors(std::vector<int> left, std::vector<int> right)
+
+/* A sequencia de Jacob e utilizada para calcular a posicao de determinado numero numa sequencia*/
+std::vector<int> PmergeMe::jacobSequence(int size)
 {
-	std::vector<int> merged;
+	std::vector<int> jacob;
+	std::vector<int> final_seq;
+	int curr = 3;
+	int n = 3;
 
-	while (!left.empty() && !right.empty())
+	jacob.push_back(1);
+
+	while (jacob.back() < size)
 	{
-		if (left.front() <= right.front())
-		{
-			merged.push_back(left.front());
-			left.erase(left.begin());
-		}
-		else
-		{
-			merged.push_back(right.front());
-			right.erase(right.begin());
-		}
+		jacob.push_back(curr);
+		curr = std::pow(2, n) - curr;
+		n++;
 	}
-	while (!left.empty())//if left vector is odd-sized
+	final_seq.push_back(1);
+	for (int i = 1; i < (int)jacob.size(); i++)
 	{
-		merged.push_back(left.front());
-		left.erase(left.begin());
-	}
-	while (!right.empty())//if right vector is odd-sized
-	{
-		merged.push_back(right.front());
-		right.erase(right.begin());
+		for (int j = jacob[i]; j > jacob[i - 1]; j--)
+		{
+			if (j <= size)
+				final_seq.push_back(j);
+		}
 	}
 
-	return merged;
+	return (final_seq);
 }
 
 std::vector<int>	PmergeMe::divideVectors(std::vector<int> vector)
 {
-	int mid = vector.size() / 2;
+	std::vector<int> larger;
+	std::vector<int> smaller;
+
+	bool odd_flag = false;
+	int struggler;
+
 
 	if (vector.size() <= 1)
 		return vector;
+	if (vector.size() % 2 != 0)
+	{
+		struggler = vector.back();
+		vector.pop_back();
+		odd_flag = true;
+	}
 	
-	std::vector<int> left(vector.begin(), vector.begin() + mid);
-	std::vector<int> right(vector.begin() + mid, vector.end());
+	for (std::vector<int>::iterator it = vector.begin(); it != vector.end(); it += 2)
+	{
+		if (*it < *(it + 1))
+		{
+			smaller.push_back(*it);
+			larger.push_back(*(it + 1));
+		}
+		else
+		{
+			smaller.push_back(*(it + 1));
+			larger.push_back(*it);
+		}
+	}
+	if (odd_flag)
+		smaller.push_back(struggler);
 
-	left = divideVectors(left);
-	right = divideVectors(right);
-	
-	return mergeVectors(left, right);
+	larger = divideVectors(larger);
+	std::vector<int> jacob = jacobSequence(smaller.size());
+
+	for (std::vector<int>::iterator it = jacob.begin(); it != jacob.end(); it++)
+	{
+		std::vector<int>::iterator lower = std::lower_bound(larger.begin(), larger.end(), smaller.at(*it - 1));
+		larger.insert(lower, smaller.at(*it - 1));
+	}
+
+	return larger;
 }
 
-void				PmergeMe::VectorFordJohnson(std::vector<int> vector)
+void	PmergeMe::VectorFordJohnson(std::vector<int> vector)
 {
 	if (vector.size() < 15 )
 	{
@@ -117,57 +145,54 @@ void				PmergeMe::VectorFordJohnson(std::vector<int> vector)
     std::cout << "Time to process a range of " << vector.size() << " elements with std::vector<int>: " << std::fixed << std::setprecision(2) << elapsed_time << " microseconds (µs)" << std::endl;
 }
 
-std::list<int>		PmergeMe::mergeLists(std::list<int> left, std::list<int> right)
-{
-	std::list<int> merged;
-
-	while (!left.empty() && !right.empty())
-	{
-		if (left.front() <= right.front())
-		{
-			merged.push_back(left.front());
-			left.erase(left.begin());
-		}
-		else
-		{
-			merged.push_back(right.front());
-			right.erase(right.begin());
-		}
-	}
-	while (!left.empty())//if left list is odd-sized
-	{
-		merged.push_back(left.front());
-		left.erase(left.begin());
-	}
-	while (!right.empty())//if right list is odd-sized
-	{
-		merged.push_back(right.front());
-		right.erase(right.begin());
-	}
-
-	return merged;
-}
-
 std::list<int>		PmergeMe::divideLists(std::list<int> list)
 {
-	int mid = list.size() / 2;
+	std::list<int> larger;
+	std::list<int> smaller;
+
+	bool odd_flag = false;
+	int struggler;
+
 
 	if (list.size() <= 1)
 		return list;
-
-	std::list<int> left, right;
-	
-	for (int i = 0; i < mid; i++)
+	if (list.size() % 2 != 0)
 	{
-		left.push_back(list.front());
-		list.pop_front();
+		struggler = list.back();
+		list.pop_back();
+		odd_flag = true;
 	}
-	right = list;
-
-	left = divideLists(left);
-	right = divideLists(right);
 	
-	return mergeLists(left, right);
+	for (std::list<int>::iterator it = list.begin(); it != list.end(); it++)
+	{
+		std::list<int>::iterator curr = it;
+		if (*it < *(++it))
+		{
+			smaller.push_back(*it);
+			larger.push_back(*curr);
+		}
+		else
+		{
+			smaller.push_back(*curr);
+			larger.push_back(*it);
+		}
+	}
+	if (odd_flag)
+		smaller.push_back(struggler);
+
+	larger = divideLists(larger);
+	std::vector<int> jacob = jacobSequence(smaller.size());
+
+	for (std::vector<int>::iterator it = jacob.begin(); it != jacob.end(); it++)
+	{
+		std::list<int>::iterator index = smaller.begin();
+		std::advance(index, *it - 1);//std::list does not support random access, so we need to iterate to the desired index
+		std::list<int>::iterator lower = std::lower_bound(larger.begin(), larger.end(), *index);
+	
+		larger.insert(lower, *index);
+	}
+
+	return larger;
 }
 
 void				PmergeMe::ListFordJohnson(std::list<int> list)

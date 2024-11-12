@@ -32,11 +32,13 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 	return *this;
 }
 
-int	BitcoinExchange::loadCsv(std::string data_file)
+int	BitcoinExchange::loadCsv(std::string data_file, std::string txt_file)
 {
 	std::ifstream file(data_file.c_str());
 	std::string line;
 	std::string key, nbr;
+
+	BitcoinExchange bit;
 
 	if (!file.is_open())
 	{
@@ -51,10 +53,12 @@ int	BitcoinExchange::loadCsv(std::string data_file)
 		{
 			key = key.c_str();
 			nbr = nbr.c_str();
-			csvData[key] = nbr;
+			bit.csvData[key] = nbr;
 		}
 	}
 	file.close();
+	if (bit.exchange(txt_file))
+		return EXIT_FAILURE;
 	return (EXIT_SUCCESS);
 }
 

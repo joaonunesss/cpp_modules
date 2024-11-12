@@ -14,17 +14,14 @@
 
 int main (int ac, char **av)
 {
-	if (ac > 2)
+	if (ac != 2)
 	{
 		std::cerr << "Invalid number of args!" << std::endl;
 		return EXIT_FAILURE;
 	}
 
-	RPN rpn;
-
-	if (!rpn.isValid(av[1]))
+	if (!RPN::isValid(av[1]))
 		return EXIT_FAILURE;
-	else if (rpn.calculate_rpn(av[1]))
-		return EXIT_FAILURE;
+	return EXIT_SUCCESS;
 	
 }

@@ -40,6 +40,20 @@ int main()
 		std::cout << *it << std::endl;
 		++it;
 	}
+
+    mstack.push(30);
+	mstack.push(50);
+	mstack.push(7370);
+	mstack.push(0);
+
+    it = mstack.begin();
+	ite = mstack.end();
+	
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
 	std::stack<int> s(mstack);
 
 						std::cout << RED << "NOW WITH STD::LIST TO COMPARE" << RESET << std::endl;
@@ -77,6 +91,20 @@ int main()
         std::cout << *it2 << std::endl;
         ++it2;
     }
+
+    myList.push_back(30);
+	myList.push_back(50);
+	myList.push_back(7370);
+	myList.push_back(0);
+
+    it2 = myList.begin();
+	ite2 = myList.end();
+	
+	while (it2 != ite2)
+	{
+		std::cout << *it2 << std::endl;
+		++it2;
+	}
 	
     return 0;
 }

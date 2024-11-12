@@ -28,10 +28,17 @@ RPN& RPN::operator=(const RPN &other)
 
 bool	RPN::isValid(std::string str)
 {
+	RPN rpn;
+
 	if (str.find_first_not_of("0123456789+-*/ ") == std::string::npos)
-		return true;
-	std::cerr << "Error. Invalid chars detected." << std::endl;
+	{
+		if (rpn.calculate_rpn(str))
+			return true;
+	}
+	else
+		std::cerr << "Error. Invalid chars detected." << std::endl;
 	return false;
+
 }
 
 double	choseOperation(char token, double a, double b)
@@ -49,7 +56,7 @@ double	choseOperation(char token, double a, double b)
 	return EXIT_FAILURE;
 }
 
-double	RPN::calculate_rpn(std::string str)
+int	RPN::calculate_rpn(std::string str)
 {
 	std::string token;
 	double a, b;
@@ -58,7 +65,6 @@ double	RPN::calculate_rpn(std::string str)
 	{
 		if (str[i] == ' ' || str[i] == '\t')
 			continue ;
-
 		if (std::isdigit(str[i]))
 		{	
 			token.clear();
@@ -69,6 +75,17 @@ double	RPN::calculate_rpn(std::string str)
 			stack.push(atof(token.c_str()));
 			i--;
 		}
+		else if (str[i] == '-' && std::isdigit(str[i + 1]))
+		{
+			token.clear();
+			token += str[i];
+			i++;
+
+			while (i < str.length() && isdigit(str[i]))
+				token += str[i++];
+			stack.push(atof(token.c_str()));
+			i--;
+		}
  		if (str[i] == '+' || str[i] == '-' || str[i] == '/' || str[i] == '*')
 		{
 			if (str[i + 1] == '+' || str[i + 1] == '-' || str[i + 1] == '/' || str[i + 1] == '*')
@@ -76,18 +93,17 @@ double	RPN::calculate_rpn(std::string str)
 				std::cerr << "Error. Invalid operator in expression." << std::endl;
 				return EXIT_FAILURE;
 			}
+			
  			if (stack.size() < 2)
 			{
-				if (std::isdigit(str[i + 1]))
-				{
-					std::cerr << "Error. Negative numbers not accepted." << std::endl;
-					return EXIT_FAILURE;
-				}
 				std::cerr << "Error. Not enough numbers." << std::endl;
 				return EXIT_FAILURE;
 			}
-			b = stack.top(); stack.pop();
-			a = stack.top(); stack.pop();
+			b = stack.top();
+			stack.pop();
+			a = stack.top();
+			stack.pop();
+
 			if (str[i] == '/' && b == 0)
 			{
 				std::cerr << "Error. Cannot divide by zero." << std::endl;
@@ -104,7 +120,7 @@ double	RPN::calculate_rpn(std::string str)
 		return EXIT_FAILURE;
 	}
 	
-	std::cout << "Result : " << stack.top() << std::endl;
+	std::cout << "Result: " << stack.top() << std::endl;
 
 	return EXIT_SUCCESS;
 }

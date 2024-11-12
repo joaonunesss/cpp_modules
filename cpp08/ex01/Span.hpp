@@ -27,17 +27,22 @@
 
 class Span {
 	public:
-		Span(unsigned int n);
+		Span();
+		~Span();
+		Span(const Span &other);
+		Span&operator=(const Span &other);
+
+		Span(unsigned int N);
 
 		void addNumber(int nbr);
 		int shortestSpan();
 		int longestSpan();
 
-		void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		void	addManyNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end, std::vector<int> numbersToAdd);
 
 
 		std::vector<int> numbers;
-		unsigned int N;
+		unsigned int size;
 
 		class FullContainer : public std::exception {
 			public:

@@ -20,19 +20,17 @@
 
 int main()
 {
+	   					//TRYING TO SORT MORE THAN 10000 NBRS
+
 	int nbr_of_elements = 11000;
 
 	
-	Span sp = Span(nbr_of_elements);
-	std::vector<int> vector(nbr_of_elements);
+	Span sp(nbr_of_elements);
 	
-	srand(time(NULL));
-	for(int i = 0; i < (int)vector.size(); i++)
-		vector[i] = rand();
-
-	try
+ 	try
 	{
-		sp.addNumber(vector.begin(), vector.end());
+		for(unsigned int i = 0; i < sp.size; i++)
+			sp.addNumber(i);
 		std::cout << "Shortest span is " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest span is " << sp.longestSpan() << std::endl;
 	}
@@ -42,7 +40,12 @@ int main()
 		std::cerr << RESET;
 	}
 
-/*  	//TRYING TO SORT ONLY ONE NBR
+   					//TRYING TO SORT ONLY ONE NBR
+
+/* 	int nbr_of_elements = 1;
+	
+	Span sp(nbr_of_elements);
+
 	try
 	{
 		sp.addNumber(6);
@@ -54,25 +57,19 @@ int main()
 		std::cerr << e.what() << std::endl;
 		std::cerr << RESET;
 	}
+	 */
+/* 					//TRYING TO ADD MORE NBR
+	int nbr_of_elements = 4;
 	
-	//TRYING TO ADD ONE MORE NBR
+	Span sp(nbr_of_elements);
+
 	try
 	{
 		sp.addNumber(3);
 		sp.addNumber(17);
 		sp.addNumber(9);
 		sp.addNumber(11);
-		sp.addNumber(23);//element out of bounds
-	}
-	catch(const std::exception &e){
-		std::cerr << RED;
-		std::cerr << e.what() << std::endl;
-		std::cerr << RESET;
-	}
-	
-	//SORTING NBRS ADDED RETURNING SHORTEST AND LONGEST
-	try
-	{
+		//sp.addNumber(23);//element out of bounds
 		std::cout << "Shortest span is " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest span is " << sp.longestSpan() << std::endl;
 	}
@@ -82,14 +79,34 @@ int main()
 		std::cerr << RESET;
 	} */
 
-/* 	Span sp = Span(5);
+					//ADDING NBR TO VECTOR IN A EFFICIENT WAY
+
+/* 	int nbr_of_elements = 10;
 	
-	sp.addNumber(6);
-	sp.addNumber(3);
-	sp.addNumber(17);
-	sp.addNumber(9);
-	sp.addNumber(11);
+	Span sp(nbr_of_elements);
+
+	std::vector<int> numbersToAdd;
+	for(int i = 0; i < nbr_of_elements; i++)
+    	numbersToAdd.push_back(i * 10);
 	
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl; */
+	try
+	{
+		sp.addManyNumbers(numbersToAdd.begin(), numbersToAdd.end(), numbersToAdd);
+	}
+	catch(const std::exception &e){
+        std::cerr << RED;
+		std::cerr << e.what() << std::endl;
+		std::cerr << RESET;
+    }
+
+    try
+	{
+		std::cout << "Shortest span is " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span is " << sp.longestSpan() << std::endl;
+    }
+	catch(const std::exception &e){
+        std::cerr << RED;
+		std::cerr << e.what() << std::endl;
+		std::cerr << RESET;
+    } */
 }

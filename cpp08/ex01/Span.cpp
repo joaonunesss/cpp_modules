@@ -12,7 +12,30 @@
 
 #include "Span.hpp"
 
-Span::Span(unsigned int N) : numbers(0), N(N) {
+Span::Span() : size(0) {
+	std::cout << "Default constructor called" << std::endl;
+}
+
+Span::~Span() {
+	std::cout << "Default desconstructor called" << std::endl;
+}
+
+Span::Span(const Span &other) {
+	*this = other;
+	std::cout << "Copy constructor called" << std::endl;
+}
+
+Span& Span::operator=(const Span &other) {
+	if (this != &other)
+	{
+		numbers = other.numbers;
+		size = other.size;
+	}
+	std::cout << "Copy assignment operator called" << std::endl;
+	return *this;
+}
+
+Span::Span(unsigned int N) : size(N) {
 	
 	std::cout << GREEN;
 	std::cout << "Container numbers init with " << N << " elements" << std::endl;
@@ -21,23 +44,18 @@ Span::Span(unsigned int N) : numbers(0), N(N) {
 
 void	Span::addNumber(int nbr) {
 	
-	if (numbers.size() == N)
+	if (numbers.size() >= size)
 		throw FullContainer();
 	numbers.push_back(nbr);
-
-	std::cout << BLUE;
-	std::cout << "Number " << nbr << " added to the container" << std::endl;
-	std::cout << RESET;
 }
 
-void 	Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
-		
-    if (numbers.size() == N)
-        throw FullContainer();
+void	Span::addManyNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end, std::vector<int> numbersToAdd)
+{
+	if (numbersToAdd.size() > size)
+		throw FullContainer();
 
-    numbers.insert(numbers.end(), begin, end);
+	numbers.insert(numbers.end(), begin, end);
 }
-
 
 int		Span::shortestSpan() {
 	
@@ -63,7 +81,7 @@ int		Span::shortestSpan() {
 
 int		Span::longestSpan() {
 	
-	if (N < 2)
+	if (size < 2)
 		throw NotEnoughN();
 	std::sort(numbers.begin(), numbers.end());
 	

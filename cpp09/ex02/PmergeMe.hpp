@@ -19,6 +19,7 @@
 #include <vector>
 #include <ctime>
 #include <iomanip>
+#include <cmath>
 
 class PmergeMe {
 	
@@ -27,14 +28,15 @@ class PmergeMe {
 		~PmergeMe();
 		PmergeMe(const PmergeMe &other);
 		PmergeMe &operator=(const PmergeMe &other);
-		
-		void				VectorFordJohnson(std::vector<int> vector);
-		std::vector<int>	mergeVectors(std::vector<int> left, std::vector<int> right);
-		std::vector<int>	divideVectors(std::vector<int> vector);
+	
+	private:
+		static void			VectorFordJohnson(std::vector<int> vector);
+		static std::vector<int>	divideVectors(std::vector<int> vector);
 
-		void				ListFordJohnson(std::list<int> list);
-		std::list<int>		mergeLists(std::list<int> left, std::list<int> right);
-		std::list<int>		divideLists(std::list<int> list);
+		static void			ListFordJohnson(std::list<int> list);
+		static std::list<int>		divideLists(std::list<int> list);
+		
+		static std::vector<int>	jacobSequence(int size);
 };
 
 
