@@ -40,6 +40,28 @@ int main (int ac, char **av)
 		std::cerr << "Invalid number of args!" << std::endl;
 		return EXIT_FAILURE;
 	}
+	for (int i = 1; i < ac; i++)
+	{
+		if (std::string(av[i]).find_first_not_of("0123456789 ") != std::string::npos)
+		{
+			std::cerr << "Error. Invalid characters detected." << std::endl;
+			return EXIT_FAILURE;
+		}
+	}
+	int i = 1;
+	while(av[i])
+		i++;
+	if (i == 1 || i == 2)
+	{
+		std::cerr << "Error. Empty or single-element vector, no sorting needed." << std::endl;
+		return EXIT_FAILURE;
+	}
+
+	i = 1;
+	std::cout << "Vector Before:" << std::endl;
+	while(av[i])
+		std::cout << av[i++] << " ";
+	std::cout << std::endl;
 
 	if (PmergeMe::FordJohnsonSelector(av, ac))
 		return EXIT_FAILURE;

@@ -29,16 +29,25 @@ class PmergeMe {
 		PmergeMe(const PmergeMe &other);
 		PmergeMe &operator=(const PmergeMe &other);
 
-		static bool			FordJohnsonSelector(char **av, int ac);
-	
+		static bool	FordJohnsonSelector(char **av, int ac);
+
 	private:
+		bool		vectorFordJohnson(char **av, int ac);
+		void		recursiveDivide(std::vector<std::pair<int, int> > &pairs);
+		void		mergeVectors(std::vector<std::pair<int , int> > &left, std::vector<std::pair<int , int> > &right, std::vector<std::pair<int , int> > &result);
+		void		insertionSort(std::vector<int> &vector, std::vector<std::pair<int, int> > &pairs);
+
+		bool		ListFordJohnson(char **av, int ac);
+		void		divideLists(std::list<int> &list);
+			
+	/* private:
 		void				VectorFordJohnson(std::vector<int> vector);
 		std::vector<int>	divideVectors(std::vector<int> vector);
 
 		void				ListFordJohnson(std::list<int> list);
 		std::list<int>		divideLists(std::list<int> list);
 		
-		std::vector<int>	jacobSequence(int size);
+		std::vector<int>	jacobSequence(int size); */
 };
 
 
