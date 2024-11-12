@@ -1,4 +1,4 @@
-xercise 02: PmergeMe
+Exercise 02: PmergeMe
 As usual, there has to be enough tests to prove the program works as expected. If there isn't, do not grade this exercise. If any non-interface class is not in orthodox canonical class form, do not grade this exercise.
 
 Code review
