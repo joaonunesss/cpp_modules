@@ -15,7 +15,7 @@ OBJS = $(SRC:.cpp=.o)
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 CXX = c++
 
-SRC = main.cpp PmergeMe.cpp
+SRC = main.cpp
 
 all : $(NAME)
 

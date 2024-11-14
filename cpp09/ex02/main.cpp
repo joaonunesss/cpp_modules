@@ -12,26 +12,54 @@
 
 #include "PmergeMe.hpp"
 
-/* Ford-Johnson or Merge Insertion
-
-For example, consider the problem of sorting 21 elements. We start by comparing
-the ten pairs K 1 : K 2, K3: K4, ... , K19: K2o; then we sort the ten larger elements
-of the pairs, using merge insertion. 
-
-Diff between Vector and List
-
-Vectors:
-	Offer fast random access, better cache performance, and efficient end insertions,
-	making them ideal for read-heavy sequences.
-Lists:
-	Provide better performance for insertions and deletions at arbitrary positions and
-	are suited for scenarios where such operations dominate. More efficient for
-	applications that involve frequent insertions and deletions at arbitrary
-	positions (O(1) for adding/removing at the head or tail).
-
-*/
-
 //https://github.com/nerraou/Ford-Johnson-algorithm?tab=readme-ov-file
+
+bool	FordJohnsonSelector(char **av, int ac)
+{
+
+	std::clock_t start;
+	std::clock_t end;
+	double elapsed_time;
+
+	start = std::clock();
+	PmergeMe<std::vector<int>, std::vector<std::pair<int, int> > > vector;
+	std::vector<int> printVec = vector.FordJohnson(av, ac);
+
+	if (printVec.empty())
+		return EXIT_FAILURE;
+	else
+	{
+		end = std::clock();
+		std::cout << "Vector After:" << std::endl;
+		for (std::vector<int>::iterator it = printVec.begin(); it != printVec.end(); it++)
+				std::cout << *it << " ";
+		std::cout << std::endl;
+		
+		elapsed_time = double(end - start) / CLOCKS_PER_SEC * 1000000;
+
+		std::cout << "Time to process a range of " << printVec.size() << " elements with std::vector<int>: " << elapsed_time << " microseconds (µs)" << std::endl;
+	}
+
+	start = std::clock();
+	PmergeMe<std::deque<int>, std::deque<std::pair<int, int> > > deque;
+	std::deque<int> printDeq = deque.FordJohnson(av, ac);
+
+	if (printDeq.empty())
+		return EXIT_FAILURE;
+	else
+	{
+		end = std::clock();
+		std::cout << "Deque After:" << std::endl;
+		for (std::deque<int>::iterator it = printDeq.begin(); it != printDeq.end(); it++)
+				std::cout << *it << " ";
+		std::cout << std::endl;
+		
+		elapsed_time = double(end - start) / CLOCKS_PER_SEC * 1000000;
+
+		std::cout << "Time to process a range of " << printDeq.size() << " elements with std::deque<int>: " << elapsed_time << " microseconds (µs)" << std::endl;
+	}
+	return EXIT_SUCCESS;
+}
 
 int main (int ac, char **av)
 {
@@ -58,12 +86,12 @@ int main (int ac, char **av)
 	}
 
 	i = 1;
-	std::cout << "Vector Before:" << std::endl;
+	std::cout << "Sequence Before:" << std::endl;
 	while(av[i])
 		std::cout << av[i++] << " ";
 	std::cout << std::endl;
 
-	if (PmergeMe::FordJohnsonSelector(av, ac))
-		return EXIT_FAILURE;
+	FordJohnsonSelector(av, ac);
+	
 	return EXIT_SUCCESS;
 }
