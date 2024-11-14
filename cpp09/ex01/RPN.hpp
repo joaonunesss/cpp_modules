@@ -14,9 +14,10 @@
 #define RPN_HPP
 
 #include <iostream>
-#include <stack> //stack is LIFO (Last In First Out)
 #include <cstdlib>
 #include <cctype>
+
+#include <stack> //stack is LIFO (Last In First Out)
 
 class RPN {
 	public:

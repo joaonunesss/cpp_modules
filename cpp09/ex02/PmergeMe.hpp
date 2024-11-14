@@ -26,18 +26,18 @@ class PmergeMe {
 	
 	public:
 		PmergeMe();
-		PmergeMe(const PmergeMe &other);
 		~PmergeMe();
-		PmergeMe &operator=(const PmergeMe &other);
-		
 		T			FordJohnson(char **av, int ac);
 
 	private:
+		PmergeMe(const PmergeMe &other);
+		PmergeMe &operator=(const PmergeMe &other);
+		
 		void		createPairs(T &container, U &pairs);
 		void		recursiveDivide(U &pairs);
 		void		mergeContainers(U &left, U &right, U &result);
 		void		insertionSort(T &container, U &pairs);
-		void		binarySearch(T &container, int number);
+		void		binarySearch(T &container, double number);
 		void 		printPairs(U &pairs);
 		void		printContainer(T &container);
 };
@@ -59,6 +59,7 @@ PmergeMe<T, U> &PmergeMe<T, U>::operator=(const PmergeMe &other) {
 	return *this;
 }
 
+/* Main function of the templates */
 template <typename T, typename U>
 T	PmergeMe<T, U>::FordJohnson(char **av, int ac)
 {
@@ -66,7 +67,7 @@ T	PmergeMe<T, U>::FordJohnson(char **av, int ac)
 	U pairs;
 	
 	for (int i = 1; i < ac; i++)
-		container.push_back(std::atoi(av[i]));
+		container.push_back(std::atol(av[i]));
 	
 	createPairs(container, pairs);
 	recursiveDivide(pairs);
@@ -84,11 +85,12 @@ T	PmergeMe<T, U>::FordJohnson(char **av, int ac)
 	return container;
 }
 
+/* Aggregate numbers into pairs */
 template <typename T, typename U>
 void	PmergeMe<T, U>::createPairs(T &container, U &pairs)
 {
 	bool odd_flag = false;
-	int struggler;
+	double struggler;
 
 	if (container.size() % 2 != 0)
 	{
@@ -108,6 +110,7 @@ void	PmergeMe<T, U>::createPairs(T &container, U &pairs)
 		pairs.push_back(std::make_pair(-1, struggler));
 }
 
+/* Recursivly order the pairs and merge them in an ascending order by the first element */
 template <typename T, typename U>
 void	PmergeMe<T, U>::recursiveDivide(U &pairs)
 {
@@ -124,6 +127,7 @@ void	PmergeMe<T, U>::recursiveDivide(U &pairs)
 	mergeContainers(left, right, pairs);
 } 
 
+/* Merge pairs ordering them in an ascending order by the first element */
 template <typename T, typename U>
 void	PmergeMe<T, U>::mergeContainers(U &left, U &right, U &result)
 {
@@ -153,24 +157,7 @@ void	PmergeMe<T, U>::mergeContainers(U &left, U &right, U &result)
 	}
 }
 
-template <typename T, typename U>
-void	PmergeMe<T, U>::binarySearch(T &container, int number)
-{
-	int start, middle, end;
-
-	start = 0;
-	end = container.size() - 1;
-	while (start <= end)
-	{
-		middle = start + (end - start) / 2;
-		if (number >= container[middle])
-			start = middle + 1;
-		else if (number < container[middle])		
-			end = middle - 1;
-	}
-	container.insert(container.begin() + start, number);
-} 
-
+/* Performs final sorting of the sequence using JacobSthal and BinarySearch */
 template <typename T, typename U>
 void PmergeMe<T, U>::insertionSort(T &container, U &pairs)
 {
@@ -194,6 +181,7 @@ void PmergeMe<T, U>::insertionSort(T &container, U &pairs)
 	}
 
 	/* Binary Search */
+	/* The idea is to insert elements in a way that reduces the overall number of shifts compared to a regular insertion sort. */
 	if (!pairs.empty())
 		binarySearch(container, pairs[0].second); //No primeiro par o Menor e pode-se colocar logo no inicio do vector
 	
@@ -212,6 +200,25 @@ void PmergeMe<T, U>::insertionSort(T &container, U &pairs)
         }
     }
 
+}
+
+/* Use binarysearh to find correct position of a number in the container and inserts it */
+template <typename T, typename U>
+void	PmergeMe<T, U>::binarySearch(T &container, double number)
+{
+	int start, mid, end;
+
+	start = 0;
+	end = container.size() - 1;
+	while (start <= end)
+	{
+		mid = start + (end - start) / 2;
+		if (number >= container[mid])
+			start = mid + 1;
+		else if (number < container[mid])		
+			end = mid - 1;
+	}
+	container.insert(container.begin() + start, number);
 }
 
 template <typename T, typename U>

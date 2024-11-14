@@ -17,10 +17,11 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <map>
 #include <string>
 #include <cstdlib>
 #include <cctype>
+
+#include <map>
 
 class BitcoinExchange {
 	

@@ -14,51 +14,41 @@
 
 //https://github.com/nerraou/Ford-Johnson-algorithm?tab=readme-ov-file
 
-bool	FordJohnsonSelector(char **av, int ac)
+void	FordJohnsonSelector(char **av, int ac)
 {
-
 	std::clock_t start;
 	std::clock_t end;
 	double elapsed_time;
 
+	//-----------------------------------------VECTOR----------------------------------------------------//
 	start = std::clock();
-	PmergeMe<std::vector<int>, std::vector<std::pair<int, int> > > vector;
-	std::vector<int> printVec = vector.FordJohnson(av, ac);
+	PmergeMe<std::vector<double>, std::vector<std::pair<double, double> > > vector;
+	std::vector<double> printVec = vector.FordJohnson(av, ac);
+	end = std::clock();
 
-	if (printVec.empty())
-		return EXIT_FAILURE;
-	else
-	{
-		end = std::clock();
-		std::cout << "Vector After:" << std::endl;
-		for (std::vector<int>::iterator it = printVec.begin(); it != printVec.end(); it++)
-				std::cout << *it << " ";
-		std::cout << std::endl;
-		
-		elapsed_time = double(end - start) / CLOCKS_PER_SEC * 1000000;
+	std::cout << "Vector After:" << std::endl;
+	for (std::vector<double>::iterator it = printVec.begin(); it != printVec.end(); it++)
+			std::cout << *it << " ";
+	std::cout << std::endl;
+	
+	elapsed_time = double(end - start) / CLOCKS_PER_SEC * 1000000;
 
-		std::cout << "Time to process a range of " << printVec.size() << " elements with std::vector<int>: " << elapsed_time << " microseconds (µs)" << std::endl;
-	}
+	std::cout << "Time to process a range of " << printVec.size() << " elements with std::vector<double>: " << elapsed_time << " microseconds (µs)" << std::endl << std::endl;
 
+	//-----------------------------------------DEQUE------------------------------------------------------//
 	start = std::clock();
-	PmergeMe<std::deque<int>, std::deque<std::pair<int, int> > > deque;
-	std::deque<int> printDeq = deque.FordJohnson(av, ac);
+	PmergeMe<std::deque<double>, std::deque<std::pair<double, double> > > deque;
+	std::deque<double> printDeq = deque.FordJohnson(av, ac);
+	end = std::clock();
 
-	if (printDeq.empty())
-		return EXIT_FAILURE;
-	else
-	{
-		end = std::clock();
-		std::cout << "Deque After:" << std::endl;
-		for (std::deque<int>::iterator it = printDeq.begin(); it != printDeq.end(); it++)
-				std::cout << *it << " ";
-		std::cout << std::endl;
-		
-		elapsed_time = double(end - start) / CLOCKS_PER_SEC * 1000000;
+	std::cout << "Deque After:" << std::endl;
+	for (std::deque<double>::iterator it = printDeq.begin(); it != printDeq.end(); it++)
+			std::cout << *it << " ";
+	std::cout << std::endl;
+	
+	elapsed_time = double(end - start) / CLOCKS_PER_SEC * 1000000;
 
-		std::cout << "Time to process a range of " << printDeq.size() << " elements with std::deque<int>: " << elapsed_time << " microseconds (µs)" << std::endl;
-	}
-	return EXIT_SUCCESS;
+	std::cout << "Time to process a range of " << printDeq.size() << " elements with std::deque<double>: " << elapsed_time << " microseconds (µs)" << std::endl;
 }
 
 int main (int ac, char **av)
@@ -79,7 +69,7 @@ int main (int ac, char **av)
 	int i = 1;
 	while(av[i])
 		i++;
-	if (i == 1 || i == 2)
+	if (i == 2)
 	{
 		std::cerr << "Error. Empty or single-element vector, no sorting needed." << std::endl;
 		return EXIT_FAILURE;
@@ -89,7 +79,7 @@ int main (int ac, char **av)
 	std::cout << "Sequence Before:" << std::endl;
 	while(av[i])
 		std::cout << av[i++] << " ";
-	std::cout << std::endl;
+	std::cout << std::endl << std::endl;
 
 	FordJohnsonSelector(av, ac);
 	
